@@ -191,6 +191,9 @@ export default {
   name: 'App',
   setup () {
     const todos = useStorage()
+    if(!storage.getItem('user')) {
+      storage.setItem('user', new Date().getTime())
+    }
     console.log(getData('/todos'))
 
     const { remove, removeCompleted } = useRemove(todos)
