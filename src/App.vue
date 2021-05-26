@@ -61,6 +61,7 @@
 <script>
 import './assets/index.css'
 import useLocalStorage from './utils/useLocalStorage'
+import { postData, getData } from './utils/request'
 import { ref, computed, onMounted, onUnmounted, watchEffect } from 'vue'
 
 const storage = useLocalStorage()
@@ -75,6 +76,7 @@ const useAdd = todos => {
       text,
       completed: false
     })
+    postData('/todos', {todo: text}).then(response => console.log(response.json()))
     input.value = ''
   }
   return {
@@ -189,6 +191,7 @@ export default {
   name: 'App',
   setup () {
     const todos = useStorage()
+    console.log(getData('/todos'))
 
     const { remove, removeCompleted } = useRemove(todos)
 
