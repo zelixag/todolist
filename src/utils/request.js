@@ -1,4 +1,4 @@
-const HOST = 'http://106.75.190.202:10086'
+const HOST = 'https://106.75.190.202:10086'
 
 
 export function postData(url, data) {
